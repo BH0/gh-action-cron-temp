@@ -1,4 +1,4 @@
-name: unusedbutexample
+name: notrunning
 on:
   schedule:
     - cron: "*/5 * * * *"
