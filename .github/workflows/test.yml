@@ -1,9 +1,7 @@
 name: notrunning
-on: 
-  push:
-    branches:
-      - main 
-
+on:
+  schedule:
+    - cron: "*/7 * * * *"
 jobs:
   build:
     runs-on: ubuntu-latest
