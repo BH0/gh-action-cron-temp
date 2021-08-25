@@ -1,11 +1,17 @@
-name: notrunning
+name: pup
 on:
   schedule:
-    - cron: "*/7 * * * *"
+    - cron: "*/5 * * * *"
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x, 14.x, 15.x]
     steps:
-    - name: get
-      run: |
-        curl https://xshss.sse.codesandbox.io/lyrics?artist=disturbed&song=stricken
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install
+      - run: npm start
